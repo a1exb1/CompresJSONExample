@@ -39,9 +39,15 @@ class ViewController: UIViewController {
         
 //        CardDesignItem.compresJsonWebApiGetMultipleObjects(CardDesignItem.self, completion: { (objects) -> () in
 //            
-//            println(objects.count)
+//            println(objects)
 //        })
-
+        
+//        println(CardDesignItem.webApiUrls().getMultipleUrl()!)
+//
+//        CompresJsonRequest.create(CardDesignItem.webApiUrls().getMultipleUrl()!, parameters: nil, method: .GET).onDownloadSuccess { (json, request) -> () in
+//            
+//            println(json)
+//        }
     }
 
     override func didReceiveMemoryWarning() {
