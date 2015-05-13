@@ -28,7 +28,7 @@ public class CompresJsonRequest: JsonRequest {
             
             //NSJSONSerialization.dataWithJSONObject(params, options: NSJSONWritingOptions.PrettyPrinted, error: <#NSErrorPointer#>)
             //json = json.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
-            json = json.replaceString("\"", withString: "#")
+            //json = json.replaceString("\"", withString: "#")
             //println("json: \(json)")
             json = CompresJSON.encryptAndCompressAsNecessary(json)
             
@@ -63,7 +63,7 @@ public class CompresJsonRequest: JsonRequest {
                     let json = JSON(data: data! as! NSData)
                     
                     let encryptedJson = json["data"].stringValue
-                    let unencryptedJson = CompresJSON.decryptAndDecompressAsNecessary(encryptedJson).replaceString("#", withString: "\"")
+                    let unencryptedJson = CompresJSON.decryptAndDecompressAsNecessary(encryptedJson) //.replaceString("#", withString: "\"")
                     
                     if let dataFromString = unencryptedJson.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false){
                         

@@ -13,9 +13,9 @@ class CardDesignItem: CompresJSONObject {
     
     var CardDesignItemID = 0
     var FontID = 0
-    var ColorID = 0
+    //var ColorID = 0
     var ItemText = ""
-    var CardDesignID = 0
+    //var CardDesignID = 0
     
     override func registerClassesForJsonMapping() {
 

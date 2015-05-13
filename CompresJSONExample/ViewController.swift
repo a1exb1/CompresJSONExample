@@ -15,11 +15,19 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+//        var i = CardDesignItem()
+//        i.ItemText = "hello"
+//        i.compresJSONWebApiInsert()?.onDownloadSuccess({ (json, request) -> () in
+//            
+//            println(json)
+//        })
+        
         CardDesignItem.compresJsonWebApiGetObjectByID(CardDesignItem.self, id: 8386, completion: { (object) -> () in
             
             var item:CardDesignItem = object
             println(item.CardDesignItemID)
-            item.ItemText = "hello test 10 !!! big kfjljlk"
+            println(item.ItemText)
+            item.ItemText = "hello test"
             //item.CardDesignItemID = 8386 // REMEMBER ID
             item.compresJSONWebApiUpdate()?.onDownloadSuccess({ (json, request) -> () in
                 
@@ -29,10 +37,10 @@ class ViewController: UIViewController {
             
         })
         
-        CardDesignItem.compresJsonWebApiGetMultipleObjects(CardDesignItem.self, completion: { (objects) -> () in
-            
-            println(objects.count)
-        })
+//        CardDesignItem.compresJsonWebApiGetMultipleObjects(CardDesignItem.self, completion: { (objects) -> () in
+//            
+//            println(objects.count)
+//        })
 
     }
 
