@@ -22,25 +22,25 @@ class ViewController: UIViewController {
 //            println(json)
 //        })
         
-        CardDesignItem.compresJsonWebApiGetObjectByID(CardDesignItem.self, id: 8386, completion: { (object) -> () in
-            
-            var item:CardDesignItem = object
-            println(item.CardDesignItemID)
-            println(item.ItemText)
-            item.ItemText = "hello test"
-            //item.CardDesignItemID = 8386 // REMEMBER ID
-            item.compresJSONWebApiUpdate()?.onDownloadSuccess({ (json, request) -> () in
-                
-                item = CardDesignItem.createObjectFromJson(json)
-                println("after update: \(item.ItemText)")
-            })
-            
-        })
-        
-//        CardDesignItem.compresJsonWebApiGetMultipleObjects(CardDesignItem.self, completion: { (objects) -> () in
+//        CardDesignItem.compresJsonWebApiGetObjectByID(CardDesignItem.self, id: 8386, completion: { (object) -> () in
 //            
-//            println(objects)
+//            var item:CardDesignItem = object
+//            println(item.CardDesignItemID)
+//            println(item.ItemText)
+//            item.ItemText = "hello test"
+//            //item.CardDesignItemID = 8386 // REMEMBER ID
+//            item.compresJSONWebApiUpdate()?.onDownloadSuccess({ (json, request) -> () in
+//                
+//                item = CardDesignItem.createObjectFromJson(json)
+//                println("after update: \(item.ItemText)")
+//            })
+//            
 //        })
+        
+        CardDesignItem.compresJsonWebApiGetMultipleObjects(CardDesignItem.self, completion: { (objects) -> () in
+            
+            println(objects)
+        })
         
 //        println(CardDesignItem.webApiUrls().getMultipleUrl()!)
 //
