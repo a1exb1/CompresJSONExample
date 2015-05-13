@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C3A76F978391E61102781397 /* Pods_CompresJSONExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C041D8B3FE86FF23A8EAFFE /* Pods_CompresJSONExample.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		E4490FC11B036427009BBAF8 /* CardDesignItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4490FC01B036427009BBAF8 /* CardDesignItem.swift */; };
+		E486B6C11B037F7300A099A4 /* encryptor_compressor.txt in Resources */ = {isa = PBXBuildFile; fileRef = E486B6C01B037F7300A099A4 /* encryptor_compressor.txt */; };
 		E4D67E431B034FB30069CE39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D67E421B034FB30069CE39 /* AppDelegate.swift */; };
 		E4D67E451B034FB30069CE39 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D67E441B034FB30069CE39 /* ViewController.swift */; };
 		E4D67E481B034FB30069CE39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4D67E461B034FB30069CE39 /* Main.storyboard */; };
@@ -26,6 +29,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C041D8B3FE86FF23A8EAFFE /* Pods_CompresJSONExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CompresJSONExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C97516CFE71B66E603F4CBE /* Pods-CompresJSONExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompresJSONExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-CompresJSONExample/Pods-CompresJSONExample.release.xcconfig"; sourceTree = "<group>"; };
+		E4490FC01B036427009BBAF8 /* CardDesignItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDesignItem.swift; sourceTree = "<group>"; };
+		E486B6C01B037F7300A099A4 /* encryptor_compressor.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = encryptor_compressor.txt; sourceTree = "<group>"; };
 		E4D67E3D1B034FB30069CE39 /* CompresJSONExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CompresJSONExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D67E411B034FB30069CE39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4D67E421B034FB30069CE39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +43,7 @@
 		E4D67E521B034FB40069CE39 /* CompresJSONExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CompresJSONExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D67E571B034FB40069CE39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4D67E581B034FB40069CE39 /* CompresJSONExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompresJSONExampleTests.swift; sourceTree = "<group>"; };
+		FEEBB67FCA27158275B97377 /* Pods-CompresJSONExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompresJSONExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CompresJSONExample/Pods-CompresJSONExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3A76F978391E61102781397 /* Pods_CompresJSONExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,12 +65,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8AD65264F55407DE950D448C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FEEBB67FCA27158275B97377 /* Pods-CompresJSONExample.debug.xcconfig */,
+				9C97516CFE71B66E603F4CBE /* Pods-CompresJSONExample.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B5C30BEF62D9F3BABA1FA2FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8C041D8B3FE86FF23A8EAFFE /* Pods_CompresJSONExample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E4490FBD1B036401009BBAF8 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				E4490FBE1B03640E009BBAF8 /* Shared */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		E4490FBE1B03640E009BBAF8 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				E4490FBF1B036417009BBAF8 /* Models */,
+			);
+			name = Shared;
+			sourceTree = "<group>";
+		};
+		E4490FBF1B036417009BBAF8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E4490FC01B036427009BBAF8 /* CardDesignItem.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		E4D67E341B034FB30069CE39 = {
 			isa = PBXGroup;
 			children = (
 				E4D67E3F1B034FB30069CE39 /* CompresJSONExample */,
 				E4D67E551B034FB40069CE39 /* CompresJSONExampleTests */,
 				E4D67E3E1B034FB30069CE39 /* Products */,
+				8AD65264F55407DE950D448C /* Pods */,
+				B5C30BEF62D9F3BABA1FA2FC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,6 +129,7 @@
 		E4D67E3F1B034FB30069CE39 /* CompresJSONExample */ = {
 			isa = PBXGroup;
 			children = (
+				E4490FBD1B036401009BBAF8 /* Classes */,
 				E4D67E421B034FB30069CE39 /* AppDelegate.swift */,
 				E4D67E441B034FB30069CE39 /* ViewController.swift */,
 				E4D67E461B034FB30069CE39 /* Main.storyboard */,
@@ -90,6 +143,7 @@
 		E4D67E401B034FB30069CE39 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E486B6C01B037F7300A099A4 /* encryptor_compressor.txt */,
 				E4D67E411B034FB30069CE39 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -119,9 +173,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E4D67E5C1B034FB40069CE39 /* Build configuration list for PBXNativeTarget "CompresJSONExample" */;
 			buildPhases = (
+				4AE896D2BC9C3CFD9A161DEB /* Check Pods Manifest.lock */,
 				E4D67E391B034FB30069CE39 /* Sources */,
 				E4D67E3A1B034FB30069CE39 /* Frameworks */,
 				E4D67E3B1B034FB30069CE39 /* Resources */,
+				4A5800CDA9C3B47FB622D6CD /* Embed Pods Frameworks */,
+				87472D9ACDF56884007178A9 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -192,6 +249,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E486B6C11B037F7300A099A4 /* encryptor_compressor.txt in Resources */,
 				E4D67E481B034FB30069CE39 /* Main.storyboard in Resources */,
 				E4D67E4D1B034FB30069CE39 /* LaunchScreen.xib in Resources */,
 				E4D67E4A1B034FB30069CE39 /* Images.xcassets in Resources */,
@@ -207,11 +265,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4A5800CDA9C3B47FB622D6CD /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CompresJSONExample/Pods-CompresJSONExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4AE896D2BC9C3CFD9A161DEB /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		87472D9ACDF56884007178A9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CompresJSONExample/Pods-CompresJSONExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E4D67E391B034FB30069CE39 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4490FC11B036427009BBAF8 /* CardDesignItem.swift in Sources */,
 				E4D67E451B034FB30069CE39 /* ViewController.swift in Sources */,
 				E4D67E431B034FB30069CE39 /* AppDelegate.swift in Sources */,
 			);
@@ -340,6 +447,7 @@
 		};
 		E4D67E5D1B034FB40069CE39 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FEEBB67FCA27158275B97377 /* Pods-CompresJSONExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CompresJSONExample/Info.plist;
@@ -350,6 +458,7 @@
 		};
 		E4D67E5E1B034FB40069CE39 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9C97516CFE71B66E603F4CBE /* Pods-CompresJSONExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = CompresJSONExample/Info.plist;
@@ -411,6 +520,7 @@
 				E4D67E5E1B034FB40069CE39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E4D67E5F1B034FB40069CE39 /* Build configuration list for PBXNativeTarget "CompresJSONExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +529,7 @@
 				E4D67E611B034FB40069CE39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
