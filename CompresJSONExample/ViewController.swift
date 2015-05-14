@@ -23,32 +23,32 @@ class ViewController: UIViewController {
 //            println(item.CardDesignItemID)
 //        })
         
-//        CardDesignItem.compresJsonWebApiGetObjectByID(CardDesignItem.self, id: 141, completion: { (object) -> () in
-//            
-//            var item:CardDesignItem = object
-//            println(item.CardDesignItemID)
-//            println(item.ItemText)
-//            item.ItemText = "Happy Birthday"
-//            //item.CardDesignItemID = 8386 // REMEMBER ID
-////            item.compresJSONWebApiUpdate()?.onDownloadSuccess({ (json, request) -> () in
-////                
-////                item = CardDesignItem.createObjectFromJson(json)
-////                println("after update: \(item.ItemText)")
-////            })
-//            
-//        })
-        
-
-        Customer.compresJsonWebApiGetMultipleObjects(Customer.self, completion: { (objects) -> () in
+        CardDesignItem.compresJsonWebApiGetObjectByID(CardDesignItem.self, id: 141, completion: { (object) -> () in
             
-            println(objects)
+            var item:CardDesignItem = object
+            println(item.CardDesignItemID)
+            println(item.ItemText)
+            item.ItemText = "Happy Birthday"
+            item.CardDesignItemID = 8386 // REMEMBER ID
+            item.compresJSONWebApiUpdate()?.onDownloadSuccess({ (json, request) -> () in
+                
+                item = CardDesignItem.createObjectFromJson(json)
+                println("after update: \(item.ItemText)")
+            })
+            
         })
         
-        Customer.compresJsonWebApiGetMultipleObjects(Customer.self, skip: 0, take: 8) { (objects) -> () in
-            
-            println(objects)
-        }
-        
+
+//        Customer.compresJsonWebApiGetMultipleObjects(Customer.self, completion: { (objects) -> () in
+//            
+//            println(objects)
+//        })
+//        
+//        Customer.compresJsonWebApiGetMultipleObjects(Customer.self, skip: 0, take: 8) { (objects) -> () in
+//            
+//            println(objects)
+//        }
+//        
         CardDesignItem.compresJsonWebApiGetMultipleObjects(CardDesignItem.self, completion: { (objects) -> () in
             println(objects.count)
             for item in objects {
