@@ -92,7 +92,17 @@ public class JSONObject: NSObject, WebApiManagerDelegate, JsonMappingDelegate {
     
     public class func createObjectFromJson< T : JSONObject >(json:JSON) -> T {
         
-        return T.createObjectFromDict(json.dictionaryObject!)
+        var dict = Dictionary<String, AnyObject?>()
+        
+        for (key: String, subJson: JSON) in json {
+            
+            if json[key].stringValue != "" {
+                
+                dict[key] = json[key].object
+            }
+        }
+        return T.createObjectFromDict(dict)
+        //return T.createObjectFromDict(json.dictionaryObject!)
     }
     
     public func setExtraPropertiesFromJSON(json:JSON) {

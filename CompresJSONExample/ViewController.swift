@@ -19,35 +19,42 @@ class ViewController: UIViewController {
 //        i.ItemText = "hello"
 //        i.compresJSONWebApiInsert()?.onDownloadSuccess({ (json, request) -> () in
 //            
-//            println(json)
+//            var item: CardDesignItem = CardDesignItem.createObjectFromJson(json)
+//            println(item.CardDesignItemID)
 //        })
         
-//        CardDesignItem.compresJsonWebApiGetObjectByID(CardDesignItem.self, id: 8386, completion: { (object) -> () in
+//        CardDesignItem.compresJsonWebApiGetObjectByID(CardDesignItem.self, id: 141, completion: { (object) -> () in
 //            
 //            var item:CardDesignItem = object
 //            println(item.CardDesignItemID)
 //            println(item.ItemText)
-//            item.ItemText = "hello test"
+//            item.ItemText = "Happy Birthday"
 //            //item.CardDesignItemID = 8386 // REMEMBER ID
-//            item.compresJSONWebApiUpdate()?.onDownloadSuccess({ (json, request) -> () in
-//                
-//                item = CardDesignItem.createObjectFromJson(json)
-//                println("after update: \(item.ItemText)")
-//            })
+////            item.compresJSONWebApiUpdate()?.onDownloadSuccess({ (json, request) -> () in
+////                
+////                item = CardDesignItem.createObjectFromJson(json)
+////                println("after update: \(item.ItemText)")
+////            })
 //            
 //        })
         
-        CardDesignItem.compresJsonWebApiGetMultipleObjects(CardDesignItem.self, completion: { (objects) -> () in
+
+        Customer.compresJsonWebApiGetMultipleObjects(Customer.self, completion: { (objects) -> () in
             
             println(objects)
         })
         
-//        println(CardDesignItem.webApiUrls().getMultipleUrl()!)
-//
-//        CompresJsonRequest.create(CardDesignItem.webApiUrls().getMultipleUrl()!, parameters: nil, method: .GET).onDownloadSuccess { (json, request) -> () in
-//            
-//            println(json)
-//        }
+        Customer.compresJsonWebApiGetMultipleObjects(Customer.self, skip: 0, take: 8) { (objects) -> () in
+            
+            println(objects)
+        }
+        
+        CardDesignItem.compresJsonWebApiGetMultipleObjects(CardDesignItem.self, completion: { (objects) -> () in
+            println(objects.count)
+            for item in objects {
+                println(item.ItemText)
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {

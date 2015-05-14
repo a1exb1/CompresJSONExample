@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C3A76F978391E61102781397 /* Pods_CompresJSONExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C041D8B3FE86FF23A8EAFFE /* Pods_CompresJSONExample.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		E40F4B511B04C7F9002718DF /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40F4B501B04C7F9002718DF /* Customer.swift */; };
 		E4490FC11B036427009BBAF8 /* CardDesignItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4490FC01B036427009BBAF8 /* CardDesignItem.swift */; };
 		E486B6C11B037F7300A099A4 /* encryptor_compressor.txt in Resources */ = {isa = PBXBuildFile; fileRef = E486B6C01B037F7300A099A4 /* encryptor_compressor.txt */; };
 		E4D67E431B034FB30069CE39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D67E421B034FB30069CE39 /* AppDelegate.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		8C041D8B3FE86FF23A8EAFFE /* Pods_CompresJSONExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CompresJSONExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C97516CFE71B66E603F4CBE /* Pods-CompresJSONExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompresJSONExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-CompresJSONExample/Pods-CompresJSONExample.release.xcconfig"; sourceTree = "<group>"; };
+		E40F4B501B04C7F9002718DF /* Customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		E4490FC01B036427009BBAF8 /* CardDesignItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDesignItem.swift; sourceTree = "<group>"; };
 		E486B6C01B037F7300A099A4 /* encryptor_compressor.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = encryptor_compressor.txt; sourceTree = "<group>"; };
 		E4D67E3D1B034FB30069CE39 /* CompresJSONExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CompresJSONExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				E4490FC01B036427009BBAF8 /* CardDesignItem.swift */,
+				E40F4B501B04C7F9002718DF /* Customer.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				E4490FC11B036427009BBAF8 /* CardDesignItem.swift in Sources */,
 				E4D67E451B034FB30069CE39 /* ViewController.swift in Sources */,
 				E4D67E431B034FB30069CE39 /* AppDelegate.swift in Sources */,
+				E40F4B511B04C7F9002718DF /* Customer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

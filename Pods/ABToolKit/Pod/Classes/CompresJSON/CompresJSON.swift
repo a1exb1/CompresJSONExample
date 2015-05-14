@@ -23,18 +23,38 @@ public class CompresJSON: NSObject {
         
         CompresJSON.printErrorIfEncryptionKeyIsNotSet()
         
-        var compressedString = str.compress()
+        var rc = str
         
-        return Encryptor.encrypt(compressedString, key: CompresJSON.sharedInstance().settings.encryptionKey)
+        if CompresJSON.sharedInstance().settings.shouldCompress {
+            
+            rc = rc.compress()
+        }
+        
+        if CompresJSON.sharedInstance().settings.shouldEncrypt {
+            
+            rc = Encryptor.encrypt(rc, key: CompresJSON.sharedInstance().settings.encryptionKey)
+        }
+        
+        return rc
     }
 
     public class func decryptAndDecompressAsNecessary(str: String) -> String {
             
         CompresJSON.printErrorIfEncryptionKeyIsNotSet()
 
-        var decryptedString = Encryptor.decrypt(str, key: CompresJSON.sharedInstance().settings.encryptionKey)
+        var rc = str
+        
+        if CompresJSON.sharedInstance().settings.shouldEncrypt {
+            
+            rc = Encryptor.decrypt(rc, key: CompresJSON.sharedInstance().settings.encryptionKey)
+        }
+        
+        if CompresJSON.sharedInstance().settings.shouldCompress {
+            
+            rc = rc.decompress()
+        }
 
-        return decryptedString.decompress()
+        return rc
     }
     
     public class func printErrorIfEncryptionKeyIsNotSet() {
