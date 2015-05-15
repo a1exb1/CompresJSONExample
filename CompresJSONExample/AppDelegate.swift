@@ -19,8 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         CompresJSON.sharedInstance().settings.encryptionKey = "7e4bac048ef766e83f0ec8c079e1f90c2eb690a9"
-        CompresJSON.sharedInstance().settings.shouldCompress = false
+        CompresJSON.sharedInstance().settings.shouldCompress = true
         CompresJSON.sharedInstance().settings.shouldEncrypt = true
+        CompresJSON.sharedInstance().settings.encryptUrlComponents = true
         
         WebApiDefaults.sharedInstance().domain = "http://alex.bechmann.co.uk/compresjson"
         

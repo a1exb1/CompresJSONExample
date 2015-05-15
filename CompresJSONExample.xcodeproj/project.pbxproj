@@ -12,7 +12,7 @@
 		E4490FC11B036427009BBAF8 /* CardDesignItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4490FC01B036427009BBAF8 /* CardDesignItem.swift */; };
 		E486B6C11B037F7300A099A4 /* encryptor_compressor.txt in Resources */ = {isa = PBXBuildFile; fileRef = E486B6C01B037F7300A099A4 /* encryptor_compressor.txt */; };
 		E4D67E431B034FB30069CE39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D67E421B034FB30069CE39 /* AppDelegate.swift */; };
-		E4D67E451B034FB30069CE39 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D67E441B034FB30069CE39 /* ViewController.swift */; };
+		E4D67E451B034FB30069CE39 /* CardDesignItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D67E441B034FB30069CE39 /* CardDesignItemsViewController.swift */; };
 		E4D67E481B034FB30069CE39 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4D67E461B034FB30069CE39 /* Main.storyboard */; };
 		E4D67E4A1B034FB30069CE39 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4D67E491B034FB30069CE39 /* Images.xcassets */; };
 		E4D67E4D1B034FB30069CE39 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4D67E4B1B034FB30069CE39 /* LaunchScreen.xib */; };
@@ -38,7 +38,7 @@
 		E4D67E3D1B034FB30069CE39 /* CompresJSONExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CompresJSONExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D67E411B034FB30069CE39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4D67E421B034FB30069CE39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E4D67E441B034FB30069CE39 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E4D67E441B034FB30069CE39 /* CardDesignItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDesignItemsViewController.swift; sourceTree = "<group>"; };
 		E4D67E471B034FB30069CE39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E4D67E491B034FB30069CE39 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E4D67E4C1B034FB30069CE39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -87,6 +87,7 @@
 		E4490FBD1B036401009BBAF8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E4708E781B04F2CC00640E77 /* CardDesignItems */,
 				E4490FBE1B03640E009BBAF8 /* Shared */,
 			);
 			name = Classes;
@@ -107,6 +108,14 @@
 				E40F4B501B04C7F9002718DF /* Customer.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		E4708E781B04F2CC00640E77 /* CardDesignItems */ = {
+			isa = PBXGroup;
+			children = (
+				E4D67E441B034FB30069CE39 /* CardDesignItemsViewController.swift */,
+			);
+			name = CardDesignItems;
 			sourceTree = "<group>";
 		};
 		E4D67E341B034FB30069CE39 = {
@@ -134,7 +143,6 @@
 			children = (
 				E4490FBD1B036401009BBAF8 /* Classes */,
 				E4D67E421B034FB30069CE39 /* AppDelegate.swift */,
-				E4D67E441B034FB30069CE39 /* ViewController.swift */,
 				E4D67E461B034FB30069CE39 /* Main.storyboard */,
 				E4D67E491B034FB30069CE39 /* Images.xcassets */,
 				E4D67E4B1B034FB30069CE39 /* LaunchScreen.xib */,
@@ -322,7 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4490FC11B036427009BBAF8 /* CardDesignItem.swift in Sources */,
-				E4D67E451B034FB30069CE39 /* ViewController.swift in Sources */,
+				E4D67E451B034FB30069CE39 /* CardDesignItemsViewController.swift in Sources */,
 				E4D67E431B034FB30069CE39 /* AppDelegate.swift in Sources */,
 				E40F4B511B04C7F9002718DF /* Customer.swift in Sources */,
 			);

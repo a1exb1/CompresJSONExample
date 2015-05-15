@@ -13,5 +13,5 @@ public class CompresJSONSettings: NSObject {
     public var encryptionKey = ""
     public var shouldCompress = false
     public var shouldEncrypt = true
-    
+    public var encryptUrlComponents = false
 }

@@ -15,7 +15,7 @@ public extension NSData {
         return String(NSString(data: self, encoding: NSUTF8StringEncoding)!)
     }
     
-    public func base64NSString() -> String {
+    public func base64String() -> String {
         
         return String(self.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.allZeros))
     }

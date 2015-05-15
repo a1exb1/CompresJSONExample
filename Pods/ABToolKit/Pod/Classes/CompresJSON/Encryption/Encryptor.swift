@@ -11,9 +11,9 @@ import UIKit
 private let kAnalyzer = JavaScriptAnalyzer.sharedInstance()
 private let kScriptPath = "encryptor_compressor"
 
-class Encryptor: NSObject {
+public class Encryptor: NSObject {
    
-    class func encrypt(str: String, key: String) -> String {
+    public class func encrypt(str: String, key: String) -> String {
         
         Encryptor.printErrorIfEncryptionKeyIsNotSet()
         
@@ -21,7 +21,7 @@ class Encryptor: NSObject {
         return kAnalyzer.executeJavaScriptFunction("Encrypt", args: [str, key]).toString()
     }
     
-    class func decrypt(str: String, key: String) -> String {
+    public class func decrypt(str: String, key: String) -> String {
         
         Encryptor.printErrorIfEncryptionKeyIsNotSet()
         
@@ -29,7 +29,7 @@ class Encryptor: NSObject {
         return kAnalyzer.executeJavaScriptFunction("Decrypt", args: [str, key]).toString()
     }
     
-    class func printErrorIfEncryptionKeyIsNotSet() {
+    public class func printErrorIfEncryptionKeyIsNotSet() {
         
         if CompresJSON.sharedInstance().settings.encryptionKey == "" {
             
