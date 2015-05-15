@@ -24,9 +24,6 @@ class CardDesignItemsViewController: UIViewController{
     
     func refresh(refreshControl: UIRefreshControl?) {
         
-        items = []
-        self.tableView.reloadData()
-        
         CardDesignItem.compresJsonWebApiGetMultipleObjects(CardDesignItem.self, completion: { (objects) -> () in
             
             self.items = objects
@@ -35,6 +32,7 @@ class CardDesignItemsViewController: UIViewController{
         })?.onDownloadFinished({ () -> () in
             
             refreshControl?.endRefreshing()
+            self.tableView.reloadData()
         })
         
     }
