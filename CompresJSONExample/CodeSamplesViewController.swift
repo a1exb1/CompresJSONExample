@@ -18,7 +18,7 @@ class CodeSamplesViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        sampleRequest3()
+        sampleRequest()
     }
 
     override func didReceiveMemoryWarning() {
@@ -67,7 +67,9 @@ class CodeSamplesViewController: UIViewController {
             
         .onDownloadSuccess { (json, request) -> () in
             
-            println("request successful")
+            let customer = Customer()
+            customer.CustomerID = json["CustomerID"].intValue
+            customer.CustomerName = json["CustomerName"].stringValue
             
         }.onDownloadFinished { () -> () in
             
