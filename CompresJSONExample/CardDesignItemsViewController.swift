@@ -31,6 +31,9 @@ class CardDesignItemsViewController: UIViewController{
             
             self.items = objects
             self.tableView.reloadData()
+            
+        })?.onDownloadFinished({ () -> () in
+            
             refreshControl?.endRefreshing()
         })
         
