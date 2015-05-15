@@ -47,6 +47,10 @@ class CodeSamplesViewController: UIViewController {
         .onDownloadSuccess { (json, request) -> () in
             
             println(json)
+            
+            let customer = Customer()
+            customer.CustomerID = json["CustomerID"].intValue
+            customer.CustomerName = json["CustomerName"].stringValue
         }
     }
 
