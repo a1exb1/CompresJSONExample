@@ -84,7 +84,9 @@ extension CardDesignItemsViewController: UITableViewDelegate, UITableViewDataSou
         
         let item = items[indexPath.row]
         
-        item.ItemText = "Some new string"
+        item.ItemText = "Some new s"
+        item.CardDesignID = 4
+        item.FontID = 10
         
         item.compresJSONWebApiUpdate()?.onDownloadSuccess({ (json, request) -> () in
             
