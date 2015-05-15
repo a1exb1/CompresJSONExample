@@ -42,7 +42,9 @@ class CodeSamplesViewController: UIViewController {
         CompresJsonRequest.create("http://alex.bechmann.co.uk/compresjson/api/Customers/1", parameters: nil, method: .GET)
         
         
-        CompresJsonRequest.create("http://alex.bechmann.co.uk/compresjson/api/Customers/5", parameters: nil, method: .GET).onDownloadSuccess { (json, request) -> () in
+        CompresJsonRequest.create("http://alex.bechmann.co.uk/compresjson/api/Customers/5", parameters: nil, method: .GET)
+            
+        .onDownloadSuccess { (json, request) -> () in
             
             println(json)
         }
@@ -61,7 +63,9 @@ class CodeSamplesViewController: UIViewController {
             "CustomerName" : "Sebastian",
         ]
         
-        JsonRequest.create("http://mysite.com/sample/api/Customers/5", parameters: params, method: .PUT).onDownloadSuccess { (json, request) -> () in
+        JsonRequest.create("http://mysite.com/sample/api/Customers/5", parameters: params, method: .PUT)
+            
+        .onDownloadSuccess { (json, request) -> () in
             
             println("request successful")
             
@@ -73,7 +77,9 @@ class CodeSamplesViewController: UIViewController {
     
     func sampleRequest3() {
         
-        CompresJsonRequest.create("http://alex.bechmann.co.uk/compresjson/api/Customers/1", parameters: nil, method: .GET).onDownloadFailure { (error, alert) -> () in
+        CompresJsonRequest.create("http://alex.bechmann.co.uk/compresjson/api/Customers/1", parameters: nil, method: .GET)
+        
+        .onDownloadFailure { (error, alert) -> () in
             
             alert.show()
             println(error)
