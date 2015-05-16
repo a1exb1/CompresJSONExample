@@ -14,6 +14,15 @@ class Customer: CompresJSONObject {
     var CustomerID: Int = 0
     var CurrencyCode: Int = 0
     var CustomerName: String = ""
+    var birthday = NSDate()
+    
+    var items = [CardDesignItem]()
+    
+    override func registerClassesForJsonMapping() {
+        
+        self.registerClass(CardDesignItem.self, forKey: "items")
+        self.registerDate("birthday", jsonKey: "Birthday")
+    }
     
     // MARK: - Web api methods
     

@@ -8,6 +8,7 @@
 
 import UIKit
 import ABToolKit
+import SwiftyJSON
 
 class CodeSamplesViewController: UIViewController {
 
@@ -17,10 +18,30 @@ class CodeSamplesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Customer.compresJsonWebApiGetObjectByID(Customer.self, id: 5) { (object) -> () in
-            
-            
-        }
+        var dict = [
+            "CustomerID" : 5,
+            "CustomerName" : "Alex",
+            "Birthday" : "20/09/1991",
+            "items" : [
+                [
+                    "CardDesignItemID" : 6,
+                    "FontID" : 3
+                ],
+                [
+                    "CardDesignItemID" : 7,
+                    "FontID" : 43
+                ]
+            ],
+            "Address": [
+                "Ad1" : "32 haughgate close"
+            ]
+        ]
+        
+        var json: JSON = JSON(dict)
+        
+        var customer:Customer = Customer.createObjectFromJson(json)
+        println(customer.items[1].fontID)
+        println(customer.birthday)
     }
 
     override func didReceiveMemoryWarning() {

@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         settings.shouldEncrypt = true
         settings.encryptUrlComponents = true
         
+        JSONMappingDefaults.sharedInstance().dateFormat = DateFormat.Date.rawValue
+        
         WebApiDefaults.sharedInstance().domain = "http://alex.bechmann.co.uk/compresjson"
         
         return true

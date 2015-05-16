@@ -97,7 +97,15 @@ public class JSONObject: NSObject, WebApiManagerDelegate, JsonMappingDelegate {
         
         for (key: String, subJson: JSON) in json {
             
-            if json[key].stringValue != "" {
+            if let v = json[key].array {
+                
+                dict[key] = json[key].object
+            }
+            else if let v = json[key].dictionary {
+                
+                dict[key] = json[key].object
+            }
+            else if json[key].stringValue != "" {
                 
                 dict[key] = json[key].object
             }
@@ -229,6 +237,7 @@ public class JSONObject: NSObject, WebApiManagerDelegate, JsonMappingDelegate {
     func setPropertiesFromDictionary(dict: Dictionary<String, AnyObject?>){
         
         classMappings = Dictionary<String, Mapping>() // this is needed for some reason
+        self.jsonMappingDelegate = self
         jsonMappingDelegate?.registerClassesForJsonMapping?()
         
         for k in keysWithTypes() {
@@ -344,10 +353,10 @@ public class JSONObject: NSObject, WebApiManagerDelegate, JsonMappingDelegate {
         registerClass(nil, propertyKey: propertyKey, jsonKey: jsonKey, format: nil)
     }
     
-    public func registerClass(anyClass: AnyClass, propertyKey: String, jsonKey: String, format: String?) {
-        
-        registerClass(anyClass, propertyKey: propertyKey, jsonKey: jsonKey, format: format)
-    }
+//    public func registerClass(anyClass: AnyClass, propertyKey: String, jsonKey: String, format: String?) {
+//        
+//        registerClass(anyClass, propertyKey: propertyKey, jsonKey: jsonKey, format: format)
+//    }
     
     
     public func registerClass(anyClass: AnyClass, propertyKey: String, jsonKey: String) {
@@ -370,10 +379,15 @@ public class JSONObject: NSObject, WebApiManagerDelegate, JsonMappingDelegate {
         registerDate(forKey, jsonKey: forKey, format: format)
     }
 
-//    func registerDate(forKey: String) {
-//        
-//        registerDate(forKey, jsonKey: forKey, format: JSONMappingDefaults.sharedInstance().dateFormat)
-//    }
+    public func registerDate(forKey: String, jsonKey: String) {
+        
+        registerDate(forKey, jsonKey: jsonKey, format: JSONMappingDefaults.sharedInstance().dateFormat)
+    }
+    
+    public func registerDate(forKey: String) {
+        
+        registerDate(forKey, jsonKey: forKey)
+    }
     
     public func registerClassesForJsonMapping() {
         
