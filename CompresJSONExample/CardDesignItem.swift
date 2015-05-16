@@ -12,13 +12,14 @@ import ABToolKit
 class CardDesignItem: CompresJSONObject {
     
     var CardDesignItemID = 0
-    var FontID = 0
+    var fontID = 0
     var ColorID = 0
     var ItemText = ""
     var CardDesignID = 0
     
     override func registerClassesForJsonMapping() {
 
+        self.registerKey("fontID", jsonKey: "FontID")
     }
     
     

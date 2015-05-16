@@ -20,6 +20,7 @@ class Mapping {
     var propertyKey = ""
     var jsonKey = ""
     var dateFormat = ""
+    var ignoreMClass = false
 }
 
 class KeyWithType {
@@ -237,7 +238,12 @@ public class JSONObject: NSObject, WebApiManagerDelegate, JsonMappingDelegate {
             if let mapper = classMappings[propertyKey] {
                 
                 ///?
-                if mapper.mClass === NSDate.self && dict[mapper.jsonKey] is String{
+                if mapper.ignoreMClass {
+                    
+                    setPropertyWithoutClassMapper(k, dict: dict, propertyKey: mapper.propertyKey, jsonKey: mapper.jsonKey)
+                }
+                
+                else if mapper.mClass === NSDate.self && dict[mapper.jsonKey] is String{
                     
                     var date = NSDate.dateFromString(dict[mapper.jsonKey]! as! String, format: mapper.dateFormat)
                     self.setValue(date, forKey: mapper.propertyKey)
@@ -270,30 +276,37 @@ public class JSONObject: NSObject, WebApiManagerDelegate, JsonMappingDelegate {
             }
             else if contains(dict.keys, propertyKey) {
                 
-                if let dictionaryValue: AnyObject? = dict[propertyKey]{
-                    
-                    //TODO: - check for more types
-                    var typeString = "\(k.type)"
-                    
-                    if typeString.contains("NSDate") {
-                        
-                        //if received date in dictinoary
-                        if let dictionaryValueAsDate = dictionaryValue as? NSDate {
-                            self.setValue(dictionaryValueAsDate, forKey: propertyKey)
-                        }
-                        else{ // translate string to date as default
-                            
-                            var date = NSDate.dateFromString(dict[propertyKey]! as! String, format: JSONMappingDefaults.sharedInstance().dateFormat)
-                            self.setValue(date, forKey: propertyKey)
-                        }
-                    }
-                    else{
-                        
-                        self.setValue(dictionaryValue, forKey: propertyKey)
-                    }
-                }
+                setPropertyWithoutClassMapper(k, dict: dict, propertyKey: propertyKey, jsonKey: propertyKey)
             }            
         }
+    }
+    
+    private func setPropertyWithoutClassMapper(k: KeyWithType, dict: Dictionary<String, AnyObject?>, propertyKey: String, jsonKey:String) {
+        
+        if let dictionaryValue: AnyObject? = dict[jsonKey]{
+            
+            //TODO: - check for more types
+            var typeString = "\(k.type)"
+            
+            if typeString.contains("NSDate") {
+                
+                //if received date in dictinoary
+                if let dictionaryValueAsDate = dictionaryValue as? NSDate {
+                    
+                    self.setValue(dictionaryValueAsDate, forKey: propertyKey)
+                }
+                else {
+                    // translate string to date as default
+                    var date = NSDate.dateFromString(dict[propertyKey]! as! String, format: JSONMappingDefaults.sharedInstance().dateFormat)
+                    self.setValue(date, forKey: propertyKey)
+                }
+            }
+            else{
+                
+                self.setValue(dictionaryValue, forKey: propertyKey)
+            }
+        }
+        
     }
     
     public class func createObjectFromDict< T : JSONObject >(dict: Dictionary<String, AnyObject?>) -> T {
@@ -303,19 +316,39 @@ public class JSONObject: NSObject, WebApiManagerDelegate, JsonMappingDelegate {
         return obj
     }
     
-    public func registerClass(anyClass: AnyClass, propertyKey: String, jsonKey: String, format: String?) {
+    private func registerClass(anyClass: AnyClass?, propertyKey: String, jsonKey: String, format: String?) {
         
         var mapping = Mapping()
-        mapping.mClass = anyClass
+        
+        if let c = anyClass {
+            
+            mapping.mClass = c
+        }
+        else{
+            
+            mapping.ignoreMClass = true
+        }
+        
         mapping.propertyKey = propertyKey
         mapping.jsonKey = jsonKey
         
         if let f = format {
             mapping.dateFormat = f
         }
-
+        
         classMappings[propertyKey] = mapping
     }
+    
+    public func registerKey(propertyKey: String, jsonKey: String ) {
+        
+        registerClass(nil, propertyKey: propertyKey, jsonKey: jsonKey, format: nil)
+    }
+    
+    public func registerClass(anyClass: AnyClass, propertyKey: String, jsonKey: String, format: String?) {
+        
+        registerClass(anyClass, propertyKey: propertyKey, jsonKey: jsonKey, format: format)
+    }
+    
     
     public func registerClass(anyClass: AnyClass, propertyKey: String, jsonKey: String) {
         

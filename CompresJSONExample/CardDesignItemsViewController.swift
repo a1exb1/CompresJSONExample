@@ -76,7 +76,7 @@ extension CardDesignItemsViewController: UITableViewDelegate, UITableViewDataSou
         let item = items[indexPath.row]
         
         cell.textLabel?.text = item.ItemText
-        cell.detailTextLabel?.text = "FontID: \(item.FontID)"
+        cell.detailTextLabel?.text = "FontID: \(item.fontID)"
         
         return cell
     }
@@ -87,7 +87,7 @@ extension CardDesignItemsViewController: UITableViewDelegate, UITableViewDataSou
         
         item.ItemText = "Some new s"
         item.CardDesignID = 4
-        item.FontID = 10
+        item.fontID = 10
         
         item.compresJSONWebApiUpdate()?.onDownloadSuccess({ (json, request) -> () in
             

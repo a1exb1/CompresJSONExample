@@ -17,8 +17,10 @@ class CodeSamplesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        sampleRequest()
+        Customer.compresJsonWebApiGetObjectByID(Customer.self, id: 5) { (object) -> () in
+            
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {
