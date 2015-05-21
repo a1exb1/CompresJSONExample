@@ -27,7 +27,6 @@ class CardDesignItemsViewController: UIViewController{
         CardDesignItem.compresJsonWebApiGetMultipleObjects(CardDesignItem.self, completion: { (objects) -> () in
             
             self.items = objects
-            self.tableView.reloadData()
             
         })?.onDownloadFinished({ () -> () in
             
