@@ -33,6 +33,10 @@ class CardDesignItemsViewController: UIViewController{
             
             refreshControl?.endRefreshing()
             self.tableView.reloadData()
+            
+        }).onDownloadFailure({ (error, alert) -> () in
+            
+            alert.show()
         })
         
     }
