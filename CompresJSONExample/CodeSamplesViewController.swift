@@ -132,4 +132,9 @@ class CodeSamplesViewController: UIViewController {
             println(error)
         }
     }
+    
+    func alamofireRequestAccess() {
+        
+        CompresJsonRequest.create("", parameters: nil, method: .POST).req
+    }
 }
