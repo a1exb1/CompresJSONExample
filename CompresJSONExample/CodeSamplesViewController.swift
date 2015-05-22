@@ -40,8 +40,10 @@ class CodeSamplesViewController: UIViewController {
         var json: JSON = JSON(dict)
         
         var customer:Customer = Customer.createObjectFromJson(json)
-        println(customer.items[1].fontID)
-        println(customer.birthday)
+        //println(customer.items[1].fontID)
+        //println(customer.birthday)
+        
+        refresh(nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -130,11 +132,13 @@ class CodeSamplesViewController: UIViewController {
             
             alert.show()
             println(error)
-        }
+            
+        }.alamofireRequest?.responseJSON(options: NSJSONReadingOptions.allZeros, completionHandler: { (request, response, json, error) -> Void in
+            
+            println("Request URL: \(request.URL!)")
+            println("StatusCode: \(response!.statusCode)")
+            println(json)
+        })
     }
     
-    func alamofireRequestAccess() {
-        
-        CompresJsonRequest.create("", parameters: nil, method: .POST).req
-    }
 }

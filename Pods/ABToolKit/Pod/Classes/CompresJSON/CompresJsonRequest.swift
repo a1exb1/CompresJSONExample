@@ -32,7 +32,7 @@ public class CompresJsonRequest: JsonRequest {
             self.parameters!["data"] = json
         }
         
-        self.almofireRequest = request(self.method, self.urlString, parameters: self.parameters, encoding: ParameterEncoding.URL)
+        self.alamofireRequest = request(self.method, self.urlString, parameters: self.parameters, encoding: ParameterEncoding.URL)
             .response{ (request, response, data, error) in
                 
                 if let e = error {

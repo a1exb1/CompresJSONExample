@@ -17,7 +17,7 @@ public class JsonRequest: NSObject {
     internal var method: Alamofire.Method = .GET
     internal var parameters: Dictionary<String, AnyObject>?
     
-    var almofireRequest: Request?
+    public var alamofireRequest: Request?
     
     internal var succeedDownloadClosures: [(json: JSON, request: JsonRequest) -> ()] = []
     internal var succeedContextClosures: [() -> ()] = []
@@ -118,7 +118,7 @@ public class JsonRequest: NSObject {
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
-        self.almofireRequest = Alamofire.request(method, urlString, parameters: parameters, encoding: ParameterEncoding.URL)
+        self.alamofireRequest = Alamofire.request(method, urlString, parameters: parameters, encoding: ParameterEncoding.URL)
             .response{ (request, response, data, error) in
                 
                 if let e = error {
@@ -165,7 +165,7 @@ public class JsonRequest: NSObject {
     
     public func cancel() {
         
-        self.almofireRequest?.cancel()
+        self.alamofireRequest?.cancel()
     }
     
 }
