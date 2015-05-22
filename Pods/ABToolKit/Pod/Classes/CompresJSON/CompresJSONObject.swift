@@ -11,7 +11,7 @@ import SwiftyJSON
 
 public class CompresJSONObject: JSONObject {
    
-    public class func compresJsonWebApiGetObjectByID< T : JSONObject >(type: T.Type, id:Int, completion: (object:T) -> () ) -> CompresJsonRequest? {
+    public class func webApiGetObjectByID< T : JSONObject >(type: T.Type, id:Int, completion: (object:T) -> () ) -> CompresJsonRequest? {
         
         if let url = T.webApiUrls().getUrl(id) {
             
@@ -25,14 +25,14 @@ public class CompresJSONObject: JSONObject {
         return nil
     }
     
-    public class func compresJsonWebApiGetMultipleObjects< T : JSONObject >(type: T.Type, completion: (objects:[T]) -> () ) -> CompresJsonRequest? {
+    public class func webApiGetMultipleObjects< T : JSONObject >(type: T.Type, completion: (objects:[T]) -> () ) -> CompresJsonRequest? {
         
-        return self.compresJsonWebApiGetMultipleObjects(type, skip: 0, take: 20) { (objects) -> () in
+        return self.webApiGetMultipleObjects(type, skip: 0, take: 20) { (objects) -> () in
             completion(objects: objects)
         }
     }
     
-    public class func compresJsonWebApiGetMultipleObjects< T : JSONObject >(type: T.Type, skip:Int, take:Int, completion: (objects:[T]) -> () ) -> CompresJsonRequest? {
+    public class func webApiGetMultipleObjects< T : JSONObject >(type: T.Type, skip:Int, take:Int, completion: (objects:[T]) -> () ) -> CompresJsonRequest? {
         
         if let url = T.webApiUrls().getMultipleUrl() {
         
@@ -52,6 +52,7 @@ public class CompresJSONObject: JSONObject {
                 }
                 
                 completion(objects: objects)
+                
             } as? CompresJsonRequest
         }
         
@@ -60,12 +61,12 @@ public class CompresJSONObject: JSONObject {
     
     // MARK: - Web Api Methods
     
-    public func compresJSONWebApiInsert() -> CompresJsonRequest?{
+    public override func webApiInsert() -> CompresJsonRequest?{
         
-        return compresJSONWebApiInsert(nil)
+        return webApiInsert(nil)
     }
     
-    public func compresJSONWebApiInsert(keysToInclude: Array<String>?) -> CompresJsonRequest?{
+    public override func webApiInsert(keysToInclude: Array<String>?) -> CompresJsonRequest?{
         
         if let url = self.dynamicType.webApiUrls().insertUrl() {
             
@@ -80,12 +81,12 @@ public class CompresJSONObject: JSONObject {
         return nil
     }
     
-    public func compresJSONWebApiUpdate() -> JsonRequest?{
+    public override func webApiUpdate() -> CompresJsonRequest?{
         
-        return compresJSONWebApiUpdate(nil)
+        return webApiUpdate(nil)
     }
     
-    public func compresJSONWebApiUpdate(keysToInclude: Array<String>?) -> CompresJsonRequest?{
+    public override func webApiUpdate(keysToInclude: Array<String>?) -> CompresJsonRequest?{
         
         if let url = self.dynamicType.webApiUrls().updateUrl(webApiManagerDelegate?.webApiRestObjectID()) {
             
@@ -99,7 +100,7 @@ public class CompresJSONObject: JSONObject {
         return nil
     }
     
-    public func compresJSONWebApiDelete() -> CompresJsonRequest?{
+    public override func webApiDelete() -> CompresJsonRequest?{
         
         if let url = self.dynamicType.webApiUrls().deleteUrl(webApiManagerDelegate?.webApiRestObjectID()) {
             

@@ -24,7 +24,7 @@ class CardDesignItemsViewController: UIViewController{
     
     func refresh(refreshControl: UIRefreshControl?) {
         
-        CardDesignItem.compresJsonWebApiGetMultipleObjects(CardDesignItem.self, completion: { (objects) -> () in
+        CardDesignItem.webApiGetMultipleObjects(CardDesignItem.self, completion: { (objects) -> () in
             
             self.items = objects
             
@@ -88,11 +88,11 @@ extension CardDesignItemsViewController: UITableViewDelegate, UITableViewDataSou
         
         let item = items[indexPath.row]
         
-        item.ItemText = "Some new s"
+        item.ItemText = "Some new stringy"
         item.CardDesignID = 4
-        item.fontID = 10
+        item.fontID = 17
         
-        item.compresJSONWebApiUpdate()?.onDownloadSuccess({ (json, request) -> () in
+        item.webApiUpdate()?.onDownloadSuccess({ (json, request) -> () in
             
             var i:CardDesignItem = CardDesignItem.createObjectFromJson(json)
             println("afer update: \(i.ItemText)")

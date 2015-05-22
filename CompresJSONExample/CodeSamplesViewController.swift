@@ -117,7 +117,7 @@ class CodeSamplesViewController: UIViewController {
     
     func refresh(refreshControl: UIRefreshControl?) {
         
-        Customer.compresJsonWebApiGetMultipleObjects(Customer.self, completion: { (objects) -> () in
+        Customer.webApiGetMultipleObjects(Customer.self, completion: { (objects) -> () in
             
             self.customers = objects
             

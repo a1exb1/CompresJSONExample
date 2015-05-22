@@ -28,11 +28,6 @@ class KeyWithType {
     var type: MirrorType?
 }
 
-//@objc protocol WebApiDelegate {
-//    optional func webApiUrl() -> String
-//    optional func webApiMutateUrl () -> String
-//}
-
 protocol WebApiManagerDelegate {
     func webApiRestObjectID() -> Int?
 }
@@ -46,7 +41,6 @@ public class JSONObject: NSObject, WebApiManagerDelegate, JsonMappingDelegate {
     private var classMappings = Dictionary<String, Mapping>()
     var webApiManagerDelegate: WebApiManagerDelegate?
     var jsonMappingDelegate: JsonMappingDelegate?
-    var webApiManager = WebApiManager()
     
     public class func webApiUrls() -> WebApiManager {
         
@@ -80,16 +74,6 @@ public class JSONObject: NSObject, WebApiManagerDelegate, JsonMappingDelegate {
             }
         }
     }
-//
-//    class func requestObjectWithID< T : JSONObject >(id: Int) -> JsonRequest? {
-//        
-//        if let url = T.webApiUrls().getUrl(id) {
-//        
-//            return JsonRequest.create(url, parameters: nil, method: .GET)
-//        }
-//        
-//        return nil
-//    }
     
     public class func createObjectFromJson< T : JSONObject >(json:JSON) -> T {
         
@@ -111,7 +95,6 @@ public class JSONObject: NSObject, WebApiManagerDelegate, JsonMappingDelegate {
             }
         }
         return T.createObjectFromDict(dict)
-        //return T.createObjectFromDict(json.dictionaryObject!)
     }
     
     public func setExtraPropertiesFromJSON(json:JSON) {
@@ -353,11 +336,6 @@ public class JSONObject: NSObject, WebApiManagerDelegate, JsonMappingDelegate {
         registerClass(nil, propertyKey: propertyKey, jsonKey: jsonKey, format: nil)
     }
     
-//    public func registerClass(anyClass: AnyClass, propertyKey: String, jsonKey: String, format: String?) {
-//        
-//        registerClass(anyClass, propertyKey: propertyKey, jsonKey: jsonKey, format: format)
-//    }
-    
     
     public func registerClass(anyClass: AnyClass, propertyKey: String, jsonKey: String) {
         
@@ -448,9 +426,6 @@ public class JSONObject: NSObject, WebApiManagerDelegate, JsonMappingDelegate {
         return nil
     }
     
-//    func configureWebApiManager(manager: WebApiManager) {
-//        
-//    }
     
     public func webApiRestObjectID() -> Int? {
         
