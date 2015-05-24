@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		C3A76F978391E61102781397 /* Pods_CompresJSONExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C041D8B3FE86FF23A8EAFFE /* Pods_CompresJSONExample.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E40F4B511B04C7F9002718DF /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40F4B501B04C7F9002718DF /* Customer.swift */; };
+		E43FDAD41B11E2BA004BF235 /* jsxcompressor.min.txt in Resources */ = {isa = PBXBuildFile; fileRef = E43FDAD31B11E2BA004BF235 /* jsxcompressor.min.txt */; };
+		E43FDAD81B11F063004BF235 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E43FDAD71B11F063004BF235 /* libz.dylib */; };
+		E43FDADD1B125711004BF235 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43FDADC1B125711004BF235 /* BaseViewController.swift */; };
+		E43FDAE21B12586F004BF235 /* SaveCardDesignItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43FDAE11B12586F004BF235 /* SaveCardDesignItemViewController.swift */; };
+		E43FDAE51B1258E0004BF235 /* EditingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43FDAE41B1258E0004BF235 /* EditingTableViewCell.swift */; };
 		E4490FC11B036427009BBAF8 /* CardDesignItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4490FC01B036427009BBAF8 /* CardDesignItem.swift */; };
 		E449BB561B062BEF00DB53F3 /* CodeSamplesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E449BB551B062BEF00DB53F3 /* CodeSamplesViewController.swift */; };
 		E486B6C11B037F7300A099A4 /* encryptor_compressor.txt in Resources */ = {isa = PBXBuildFile; fileRef = E486B6C01B037F7300A099A4 /* encryptor_compressor.txt */; };
@@ -34,6 +39,11 @@
 		8C041D8B3FE86FF23A8EAFFE /* Pods_CompresJSONExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CompresJSONExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C97516CFE71B66E603F4CBE /* Pods-CompresJSONExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompresJSONExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-CompresJSONExample/Pods-CompresJSONExample.release.xcconfig"; sourceTree = "<group>"; };
 		E40F4B501B04C7F9002718DF /* Customer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
+		E43FDAD31B11E2BA004BF235 /* jsxcompressor.min.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = jsxcompressor.min.txt; sourceTree = "<group>"; };
+		E43FDAD71B11F063004BF235 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		E43FDADC1B125711004BF235 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		E43FDAE11B12586F004BF235 /* SaveCardDesignItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveCardDesignItemViewController.swift; sourceTree = "<group>"; };
+		E43FDAE41B1258E0004BF235 /* EditingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditingTableViewCell.swift; sourceTree = "<group>"; };
 		E4490FC01B036427009BBAF8 /* CardDesignItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardDesignItem.swift; sourceTree = "<group>"; };
 		E449BB551B062BEF00DB53F3 /* CodeSamplesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeSamplesViewController.swift; sourceTree = "<group>"; };
 		E486B6C01B037F7300A099A4 /* encryptor_compressor.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = encryptor_compressor.txt; sourceTree = "<group>"; };
@@ -55,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E43FDAD81B11F063004BF235 /* libz.dylib in Frameworks */,
 				C3A76F978391E61102781397 /* Pods_CompresJSONExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,17 +92,59 @@
 		B5C30BEF62D9F3BABA1FA2FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E43FDAD71B11F063004BF235 /* libz.dylib */,
 				8C041D8B3FE86FF23A8EAFFE /* Pods_CompresJSONExample.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E43FDADB1B125630004BF235 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				E449BB551B062BEF00DB53F3 /* CodeSamplesViewController.swift */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		E43FDADE1B125718004BF235 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E43FDADC1B125711004BF235 /* BaseViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E43FDADF1B125830004BF235 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E4D67E441B034FB30069CE39 /* CardDesignItemsViewController.swift */,
+				E43FDAE11B12586F004BF235 /* SaveCardDesignItemViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E43FDAE01B12583C004BF235 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E4490FC01B036427009BBAF8 /* CardDesignItem.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		E43FDAE31B1258B9004BF235 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E43FDAE41B1258E0004BF235 /* EditingTableViewCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		E4490FBD1B036401009BBAF8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E43FDADB1B125630004BF235 /* Other */,
 				E4708E781B04F2CC00640E77 /* CardDesignItems */,
 				E4490FBE1B03640E009BBAF8 /* Shared */,
-				E449BB551B062BEF00DB53F3 /* CodeSamplesViewController.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -99,6 +152,7 @@
 		E4490FBE1B03640E009BBAF8 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				E43FDADE1B125718004BF235 /* ViewControllers */,
 				E4490FBF1B036417009BBAF8 /* Models */,
 			);
 			name = Shared;
@@ -107,7 +161,6 @@
 		E4490FBF1B036417009BBAF8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E4490FC01B036427009BBAF8 /* CardDesignItem.swift */,
 				E40F4B501B04C7F9002718DF /* Customer.swift */,
 			);
 			name = Models;
@@ -116,7 +169,9 @@
 		E4708E781B04F2CC00640E77 /* CardDesignItems */ = {
 			isa = PBXGroup;
 			children = (
-				E4D67E441B034FB30069CE39 /* CardDesignItemsViewController.swift */,
+				E43FDAE01B12583C004BF235 /* Models */,
+				E43FDADF1B125830004BF235 /* ViewControllers */,
+				E43FDAE31B1258B9004BF235 /* Views */,
 			);
 			name = CardDesignItems;
 			sourceTree = "<group>";
@@ -157,6 +212,7 @@
 		E4D67E401B034FB30069CE39 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E43FDAD31B11E2BA004BF235 /* jsxcompressor.min.txt */,
 				E486B6C01B037F7300A099A4 /* encryptor_compressor.txt */,
 				E4D67E411B034FB30069CE39 /* Info.plist */,
 			);
@@ -232,6 +288,7 @@
 				TargetAttributes = {
 					E4D67E3C1B034FB30069CE39 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = 683JDF4RTN;
 					};
 					E4D67E511B034FB40069CE39 = {
 						CreatedOnToolsVersion = 6.3;
@@ -264,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E486B6C11B037F7300A099A4 /* encryptor_compressor.txt in Resources */,
+				E43FDAD41B11E2BA004BF235 /* jsxcompressor.min.txt in Resources */,
 				E4D67E481B034FB30069CE39 /* Main.storyboard in Resources */,
 				E4D67E4D1B034FB30069CE39 /* LaunchScreen.xib in Resources */,
 				E4D67E4A1B034FB30069CE39 /* Images.xcassets in Resources */,
@@ -334,8 +392,11 @@
 			files = (
 				E449BB561B062BEF00DB53F3 /* CodeSamplesViewController.swift in Sources */,
 				E4490FC11B036427009BBAF8 /* CardDesignItem.swift in Sources */,
+				E43FDAE21B12586F004BF235 /* SaveCardDesignItemViewController.swift in Sources */,
 				E4D67E451B034FB30069CE39 /* CardDesignItemsViewController.swift in Sources */,
+				E43FDAE51B1258E0004BF235 /* EditingTableViewCell.swift in Sources */,
 				E4D67E431B034FB30069CE39 /* AppDelegate.swift in Sources */,
+				E43FDADD1B125711004BF235 /* BaseViewController.swift in Sources */,
 				E40F4B511B04C7F9002718DF /* Customer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,9 +527,12 @@
 			baseConfigurationReference = FEEBB67FCA27158275B97377 /* Pods-CompresJSONExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CompresJSONExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
 		};
@@ -477,9 +541,12 @@
 			baseConfigurationReference = 9C97516CFE71B66E603F4CBE /* Pods-CompresJSONExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = CompresJSONExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};

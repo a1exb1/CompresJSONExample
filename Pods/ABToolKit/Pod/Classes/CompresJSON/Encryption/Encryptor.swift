@@ -18,7 +18,9 @@ public class Encryptor: NSObject {
         Encryptor.printErrorIfEncryptionKeyIsNotSet()
         
         kAnalyzer.loadScript(kScriptPath)
-        return kAnalyzer.executeJavaScriptFunction("Encrypt", args: [str, key]).toString()
+        let encrypted = kAnalyzer.executeJavaScriptFunction("Encrypt", args: [str, key]).toString()
+        
+        return encrypted.base64Encode()
     }
     
     public class func decrypt(str: String, key: String) -> String {
@@ -26,7 +28,9 @@ public class Encryptor: NSObject {
         Encryptor.printErrorIfEncryptionKeyIsNotSet()
         
         kAnalyzer.loadScript(kScriptPath)
-        return kAnalyzer.executeJavaScriptFunction("Decrypt", args: [str, key]).toString()
+        let decoded = str.base64Decode()
+        
+        return kAnalyzer.executeJavaScriptFunction("Decrypt", args: [decoded, key]).toString()
     }
     
     public class func printErrorIfEncryptionKeyIsNotSet() {

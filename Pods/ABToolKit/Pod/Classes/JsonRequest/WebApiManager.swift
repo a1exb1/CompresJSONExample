@@ -54,8 +54,9 @@ public class WebApiManager: NSObject {
             //var secretComponent = Encryptor.encrypt("api", key: kKey)
             var eRestKey = encryptSecretUrlComponent(restKey!)
             var eID = encryptSecretUrlComponent("\(id)")
+            var secretRestApiPrefix = "apih" // encryptSecretUrlComponent("api")
             
-            return validRestUrlSet() ? "\(getDomain())/apih/\(eRestKey)/\(eID)" : nil
+            return validRestUrlSet() ? "\(getDomain())/\(secretRestApiPrefix)/\(eRestKey)/\(eID)" : nil
         }
         
         return validRestUrlSet() ? "\(getDomain())/api/\(restKey!)/\(id)" : nil
@@ -65,10 +66,10 @@ public class WebApiManager: NSObject {
         
         if kEncryptComponents {
             
-            //var secretComponent = Encryptor.encrypt("api", key: kKey)
             var eRestKey = encryptSecretUrlComponent(restKey!)
+            var secretRestApiPrefix = "apih" // encryptSecretUrlComponent("api")
             
-            return validRestUrlSet() ? "\(getDomain())/apih/\(eRestKey)" : nil
+            return validRestUrlSet() ? "\(getDomain())/\(secretRestApiPrefix)/\(eRestKey)" : nil
         }
         
         return validRestUrlSet() ? "\(getDomain())/api/\(restKey!)" : nil
@@ -116,8 +117,6 @@ public class WebApiManager: NSObject {
     
     private func encryptSecretUrlComponent(str: String) -> String {
         
-        var secretComponent = Encryptor.encrypt(str, key: kKey)
-        //return secretComponent.urlEncode().replaceString("%", withString: "!").replaceString("+", withString: "£").replaceString("/", withString: "$")
-        return secretComponent.base64String()
+        return Encryptor.encrypt(str, key: kKey)
     }
 }

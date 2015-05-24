@@ -7,22 +7,27 @@
 //
 
 import UIKit
-import ABToolKit
 
-class CardDesignItemsViewController: UIViewController{
+class CardDesignItemsViewController: BaseViewController{
 
     var tableView = UITableView()
     var items = [CardDesignItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
-        self.setupTableView()
+        setupTableView(tableView, delegate: self, dataSource: self)
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "add")
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
         refresh(nil)
     }
     
-    func refresh(refreshControl: UIRefreshControl?) {
+    override func refresh(refreshControl: UIRefreshControl?) {
         
         CardDesignItem.webApiGetMultipleObjects(CardDesignItem.self, completion: { (objects) -> () in
             
@@ -37,26 +42,18 @@ class CardDesignItemsViewController: UIViewController{
             
             alert.show()
         })
-        
-    }
-
-    func setupTableView() {
-        
-        view.addSubview(tableView)
-        tableView.setTranslatesAutoresizingMaskIntoConstraints(false)
-        tableView.fillSuperView(UIEdgeInsetsZero)
-        
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        
-        var refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.AllEvents)
-        tableView.addSubview(refreshControl)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func add() {
+        
+        editItem(CardDesignItem())
+    }
+    
+    func editItem(item: CardDesignItem) {
+        
+        var v = SaveCardDesignItemViewController()
+        v.item = item
+        self.navigationController?.pushViewController(v, animated: true)
     }
     
 }
@@ -79,8 +76,8 @@ extension CardDesignItemsViewController: UITableViewDelegate, UITableViewDataSou
         let item = items[indexPath.row]
         
         cell.textLabel?.text = item.ItemText
-        cell.detailTextLabel?.text = "FontID: \(item.fontID)"
         
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
     
@@ -88,17 +85,26 @@ extension CardDesignItemsViewController: UITableViewDelegate, UITableViewDataSou
         
         let item = items[indexPath.row]
         
-        item.ItemText = "Some new stringy"
-        item.CardDesignID = 4
-        item.fontID = 17
+        editItem(item)
+    }
+    
+    
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
         
-        item.webApiUpdate()?.onDownloadSuccess({ (json, request) -> () in
+        return UITableViewCellEditingStyle.Delete
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if editingStyle == .Delete {
             
-            var i:CardDesignItem = CardDesignItem.createObjectFromJson(json)
-            println("afer update: \(i.ItemText)")
-            self.tableView.reloadData()
-        })
-        
+            let item = items[indexPath.row]
+            
+            item.webApiDelete()?.onDownloadFinished({ () -> () in
+                
+                self.refresh(nil)
+            })
+        }
     }
 }
 

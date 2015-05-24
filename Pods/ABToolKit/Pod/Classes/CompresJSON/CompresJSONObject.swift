@@ -11,6 +11,16 @@ import SwiftyJSON
 
 public class CompresJSONObject: JSONObject {
    
+    public override class func requestObjectWithID(id: Int) -> CompresJsonRequest? {
+        
+        if let url = self.webApiUrls().getUrl(id) {
+            
+            return CompresJsonRequest.create(url, parameters: nil, method: .GET) as CompresJsonRequest
+        }
+        
+        return nil
+    }
+    
     public class func webApiGetObjectByID< T : JSONObject >(type: T.Type, id:Int, completion: (object:T) -> () ) -> CompresJsonRequest? {
         
         if let url = T.webApiUrls().getUrl(id) {

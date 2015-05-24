@@ -28,6 +28,11 @@ public class JavaScriptAnalyzer: NSObject {
         let script = String(contentsOfFile: resource, encoding: NSUTF8StringEncoding, error: &error)
         
         context = JSContext()
+        
+        context?.exceptionHandler = { context, exception in
+            println("JS Error: \(exception)")
+        }
+        
         context?.evaluateScript(script)
     }
     

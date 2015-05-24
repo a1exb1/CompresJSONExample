@@ -14,7 +14,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ABToolKit:
-    :commit: 6eb056ddea7e13db37c7e0f56da7e263f8cdc755
+    :commit: 130a5a8d96bb4b22b225e5fa40c9ba7148eb4996
     :git: https://github.com/a1exb1/ABToolKit-pod.git
 
 SPEC CHECKSUMS:

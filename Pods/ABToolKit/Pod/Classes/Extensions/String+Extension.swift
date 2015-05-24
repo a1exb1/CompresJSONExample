@@ -36,9 +36,14 @@ public extension String {
         return self.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())!
     }
     
-    public func base64String() -> String {
+    public func base64Encode() -> String {
         
         return self.toData().base64String()
+    }
+    
+    public func base64Decode() -> String {
+        
+        return NSDataFromBase64String().toString()
     }
     
     public func toData() -> NSData {
