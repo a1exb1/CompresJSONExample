@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         settings.encryptionKey = "7e4bac048ef766e83f0ec8c079e1f90c2eb690a9"
         settings.shouldCompress = true
         settings.shouldEncrypt = true
-        settings.encryptUrlComponents = false
+        settings.encryptUrlComponents = true
         
         JSONMappingDefaults.sharedInstance().dateFormat = DateFormat.Date.rawValue
         

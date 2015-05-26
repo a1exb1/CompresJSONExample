@@ -8,14 +8,13 @@
 
 import UIKit
 import ABToolKit
+import SwiftyJSON
 
 class SaveCardDesignItemViewController: BaseViewController {
 
     var item = CardDesignItem()
     let tableView = UITableView(frame: CGRectZero, style: UITableViewStyle.Grouped)
-    let properties = [
-        (propertykey: "ItemText", labelValue: "Item Text")
-    ]
+    var properties: Array<(labelValue: String, propertyValue: AnyObject)> = []
     var textFields: Array<UITextField> = []
     
     override func viewDidLoad() {
@@ -26,6 +25,18 @@ class SaveCardDesignItemViewController: BaseViewController {
         tableView.registerClass(EditingTableViewCell.self, forCellReuseIdentifier: "Cell")
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Save, target: self, action: "save")
+        self.title = item.CardDesignItemID > 0 ? "Edit card" : "New card"
+        
+        setProperties()
+    }
+    
+    func setProperties() {
+    
+        properties = [
+            (labelValue: "Item Text", propertyValue: item.ItemText),
+            (labelValue: "FontID", propertyValue: item.fontID),
+            (labelValue: "Card Design ID", propertyValue: item.CardDesignID)
+        ]
     }
     
     override func refresh(refreshControl: UIRefreshControl?) {
@@ -37,14 +48,17 @@ class SaveCardDesignItemViewController: BaseViewController {
         }).onDownloadFinished({ () -> () in
             
             refreshControl?.endRefreshing()
+            self.tableView.reloadData()
         })
     }
     
     func save() {
         
+        var responseJson: JSON?
+        
         item.ItemText = textFields[0].text
-        item.fontID = 5
-        item.CardDesignID = 2
+        item.fontID = textFields[1].text.toInt()!
+        item.CardDesignID = textFields[2].text.toInt()!
         
         var request: CompresJsonRequest?
         
@@ -59,12 +73,29 @@ class SaveCardDesignItemViewController: BaseViewController {
         
         request?.onDownloadSuccess({ (json, request) -> () in
             
+            responseJson = json
+            
             self.item = CardDesignItem.createObjectFromJson(json)
             self.navigationController?.popViewControllerAnimated(true)
             
         }).onDownloadFailure({ (error, alert) -> () in
             
             alert.show()
+            
+        }).alamofireRequest?.responseJSON(options: NSJSONReadingOptions.AllowFragments, completionHandler: { (request, response, obj, error) -> Void in
+            
+            println("-- request start --")
+            println("HTTP Method: \(request.HTTPMethod!)")
+            println("URL: \(request.URLString)")
+            let contentLength: AnyObject = response!.allHeaderFields["Content-Length"]!
+            var length: CGFloat = CGFloat("\(contentLength)".toInt()!) / 10240
+            let l = NSString(format: "%.02f", length)
+            println("Content-Length: \(l)kb")
+            println("Data in HTTP body:")
+            println(obj!)
+            println("Decoded JSON: ")
+            println(responseJson!)
+            println("-- request end --")
         })
     }
 }
@@ -87,15 +118,7 @@ extension SaveCardDesignItemViewController: UITableViewDelegate, UITableViewData
         let property = properties[indexPath.row]
         
         cell.label.text = property.labelValue
-        
-        switch indexPath.row {
-        case 0:
-            cell.textField.text = item.ItemText
-            break
-            
-        default:
-            break
-        }
+        cell.textField.text = "\(property.propertyValue)"
         
         self.textFields.append(cell.textField)
         

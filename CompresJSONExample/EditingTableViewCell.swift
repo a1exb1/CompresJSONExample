@@ -36,7 +36,7 @@ class EditingTableViewCell: UITableViewCell {
         label.addTopConstraint(toView: contentView, relation: .Equal, constant: 0)
         label.addLeftConstraint(toView: contentView, relation: .Equal, constant: kPadding)
         label.addBottomConstraint(toView: contentView, relation: .Equal, constant: 0)
-        label.addWidthConstraint(relation: .Equal, constant: 100)
+        label.addWidthConstraint(relation: .Equal, constant: 160)
     }
     
     func setupTextFieldConstraints() {

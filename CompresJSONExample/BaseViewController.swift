@@ -35,4 +35,11 @@ class BaseViewController: UIViewController {
         
     }
 
+    func deselectTableViewSelectedCell(tableView: UITableView) {
+    
+        if let indexPath = tableView.indexPathForSelectedRow() {
+            
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
+    }
 }

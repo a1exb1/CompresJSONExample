@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class CardDesignItemsViewController: BaseViewController{
 
@@ -19,15 +20,19 @@ class CardDesignItemsViewController: BaseViewController{
         setupTableView(tableView, delegate: self, dataSource: self)
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "add")
+        self.title = "Cards"
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        deselectTableViewSelectedCell(tableView)
         refresh(nil)
     }
     
     override func refresh(refreshControl: UIRefreshControl?) {
+        
+        var responseJson: JSON?
         
         CardDesignItem.webApiGetMultipleObjects(CardDesignItem.self, completion: { (objects) -> () in
             
@@ -41,6 +46,26 @@ class CardDesignItemsViewController: BaseViewController{
         }).onDownloadFailure({ (error, alert) -> () in
             
             alert.show()
+            
+        }).onDownloadSuccess({ (json, request) -> () in
+            
+            responseJson = json
+            
+        }).alamofireRequest?.responseJSON(options: NSJSONReadingOptions.AllowFragments, completionHandler: { (request, response, obj, error) -> Void in
+            
+            println("-- request start --")
+            println("HTTP Method: \(request.HTTPMethod!)")
+            println("URL: \(request.URLString)")
+            let contentLength: AnyObject = response!.allHeaderFields["Content-Length"]!
+            var length: CGFloat = CGFloat("\(contentLength)".toInt()!) / 10240
+            let l = NSString(format: "%.02f", length)
+            println("Content-Length: \(l)kb")
+            println("Data in HTTP body:")
+            println(obj!)
+            println("Decoded JSON: ")
+            println(responseJson!)
+            println("-- request end --")
+            
         })
     }
     
@@ -99,10 +124,34 @@ extension CardDesignItemsViewController: UITableViewDelegate, UITableViewDataSou
         if editingStyle == .Delete {
             
             let item = items[indexPath.row]
+            var completedAnimating = false
+            var completedDataRequest = false
+            
+            var completion: () -> ()  = {
+                
+                if completedAnimating && completedDataRequest {
+                    
+                    self.refresh(nil)
+                }
+            }
             
             item.webApiDelete()?.onDownloadFinished({ () -> () in
                 
-                self.refresh(nil)
+                completedDataRequest = true
+                completion()
+            })
+            
+            UIView.animateWithDuration(0.0, animations: { () -> Void in
+                
+                tableView.beginUpdates()
+                self.items.removeAtIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Top)
+                tableView.endUpdates()
+                
+            }, completion: { (complete) -> Void in
+                
+                completedAnimating = true
+                completion()
             })
         }
     }
