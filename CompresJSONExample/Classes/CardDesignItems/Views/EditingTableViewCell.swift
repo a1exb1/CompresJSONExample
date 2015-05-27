@@ -29,6 +29,7 @@ class EditingTableViewCell: UITableViewCell {
         setupTextFieldConstraints()
     }
 
+    
     // MARK: - Constraints
     
     func setupLabelConstraints() {

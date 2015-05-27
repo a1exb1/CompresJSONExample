@@ -57,7 +57,7 @@ class CardDesignItemsViewController: BaseViewController{
             println("HTTP Method: \(request.HTTPMethod!)")
             println("URL: \(request.URLString)")
             let contentLength: AnyObject = response!.allHeaderFields["Content-Length"]!
-            var length: CGFloat = CGFloat("\(contentLength)".toInt()!) / 10240
+            var length: CGFloat = CGFloat("\(contentLength)".toInt()!) / 1024
             let l = NSString(format: "%.02f", length)
             println("Content-Length: \(l)kb")
             println("Data in HTTP body:")
@@ -65,7 +65,6 @@ class CardDesignItemsViewController: BaseViewController{
             println("Decoded JSON: ")
             println(responseJson!)
             println("-- request end --")
-            
         })
     }
     
@@ -135,17 +134,21 @@ extension CardDesignItemsViewController: UITableViewDelegate, UITableViewDataSou
                 }
             }
             
+            // Delete item (Web API)
             item.webApiDelete()?.onDownloadFinished({ () -> () in
                 
                 completedDataRequest = true
                 completion()
             })
             
+            //Animate Cell removal
             UIView.animateWithDuration(0.0, animations: { () -> Void in
                 
                 tableView.beginUpdates()
+                
                 self.items.removeAtIndex(indexPath.row)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Top)
+                
                 tableView.endUpdates()
                 
             }, completion: { (complete) -> Void in
@@ -155,5 +158,6 @@ extension CardDesignItemsViewController: UITableViewDelegate, UITableViewDataSou
             })
         }
     }
+    
 }
 

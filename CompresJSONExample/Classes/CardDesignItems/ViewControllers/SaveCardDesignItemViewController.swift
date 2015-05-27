@@ -14,7 +14,7 @@ class SaveCardDesignItemViewController: BaseViewController {
 
     var item = CardDesignItem()
     let tableView = UITableView(frame: CGRectZero, style: UITableViewStyle.Grouped)
-    var properties: Array<(labelValue: String, propertyValue: AnyObject)> = []
+    var cellProperties: Array<(labelValue: String, textFieldValue: AnyObject)> = []
     var textFields: Array<UITextField> = []
     
     override func viewDidLoad() {
@@ -32,10 +32,10 @@ class SaveCardDesignItemViewController: BaseViewController {
     
     func setProperties() {
     
-        properties = [
-            (labelValue: "Item Text", propertyValue: item.ItemText),
-            (labelValue: "FontID", propertyValue: item.fontID),
-            (labelValue: "Card Design ID", propertyValue: item.CardDesignID)
+        cellProperties = [
+            (labelValue: "Item Text", textFieldValue: item.ItemText),
+            (labelValue: "FontID", textFieldValue: item.fontID),
+            (labelValue: "Card Design ID", textFieldValue: item.CardDesignID)
         ]
     }
     
@@ -88,7 +88,7 @@ class SaveCardDesignItemViewController: BaseViewController {
             println("HTTP Method: \(request.HTTPMethod!)")
             println("URL: \(request.URLString)")
             let contentLength: AnyObject = response!.allHeaderFields["Content-Length"]!
-            var length: CGFloat = CGFloat("\(contentLength)".toInt()!) / 10240
+            var length: CGFloat = CGFloat("\(contentLength)".toInt()!) / 1024
             let l = NSString(format: "%.02f", length)
             println("Content-Length: \(l)kb")
             println("Data in HTTP body:")
@@ -98,6 +98,7 @@ class SaveCardDesignItemViewController: BaseViewController {
             println("-- request end --")
         })
     }
+    
 }
 
 extension SaveCardDesignItemViewController: UITableViewDelegate, UITableViewDataSource  {
@@ -109,16 +110,16 @@ extension SaveCardDesignItemViewController: UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return properties.count
+        return cellProperties.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! EditingTableViewCell
-        let property = properties[indexPath.row]
+        let property = cellProperties[indexPath.row]
         
         cell.label.text = property.labelValue
-        cell.textField.text = "\(property.propertyValue)"
+        cell.textField.text = "\(property.textFieldValue)"
         
         self.textFields.append(cell.textField)
         
@@ -132,4 +133,5 @@ extension SaveCardDesignItemViewController: UITableViewDelegate, UITableViewData
         cell.textField.becomeFirstResponder()
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
+    
 }
